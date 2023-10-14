@@ -1,38 +1,30 @@
 require 'json'
 
-# TODO - let's read/write data from beers.json
-filepath    = 'data/beers.json'
-
 # READ (= PARSE) A JSON
-serialized_beers = File.read(filepath)
-# p serialized_beers
-# p serialized_beers.class
-
-beer_data = JSON.parse(serialized_beers)
-
-# p beer_data
-# p beer_data.class
-
-beer_data["beers"].each do |beer|
-  puts "#{beer["name"]} from #{beer["origin"]}"
-end
+# filepath = "data/beers.json"
+# raw_json = File.read(filepath)
+# data = JSON.parse(raw_json)
+# p data # is a hash with String keys
+# p data.class
 
 # WRITE A JSON
-beatles = { beatles: [
-  {
-    first_name: "John",
-    last_name: "Lennon",
-    instrument: "Guitar"
-  },
-  {
-    first_name: "Paul",
-    last_name: "McCartney",
-    instrument: "Bass Guitar"
-  }
-]}
 
-filepath    = 'data/beatles.json'
-File.open(filepath, 'wb') do |file|
-  serialized_beatles = JSON.generate(beatles)
-  file.write(serialized_beatles)
+beatles = { 
+  beatles: [
+    {
+      first_name: "John",
+      last_name: "Lennon",
+      instrument: "Guitar"
+    },
+    {
+      first_name: "Paul",
+      last_name: "McCartney",
+      instrument: "Bass Guitar"
+    }
+  ]
+}
+
+filepath = 'data/beatles.json'
+File.open(filepath, 'wb') do |json_file|
+  json_file.write(JSON.generate(beatles))
 end

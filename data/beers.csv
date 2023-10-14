@@ -1,4 +1,4 @@
-'Name';'Appearance';'Origin'
-'Asahi';'Pale Lager';'Japan'
-'Guinness';'Stout';'Ireland'
-'Heineken';'Lager';'Netherlands'
+"Name","Appearance","Origin","Alcohol"
+"Asahi","Pale Lager","Japan",5
+"Guinness","Stout","Ireland",8
+"Heineken","Lager","Netherlands",7

@@ -1,13 +1,14 @@
-require 'json'
 require 'open-uri'
+require 'json'
 
-# TODO - Let's fetch name and bio from a given GitHub username
-# base_url = 'https://animechan.vercel.app/api'
-# end_point =  '/random'
+# TODO - Let's fetch some API from:
+# https://github.com/public-apis/public-apis
+# url = 'https://api.github.com/users/yannklein'
+url = "https://emojihub.yurace.pro/api/random"
 
-url = 'https://animechan.vercel.app/api/random'
+# Step 1 - get the html file
+raw_json = URI.open(url).read
 
-url_serialized = URI.open(url).read
-anime_quotes = JSON.parse(url_serialized)
-
-puts "#{anime_quotes["anime"]} - #{anime_quotes["character"]} said #{anime_quotes["quote"][0..30]}..."
+# Step 2 - parse it with json library (find anime character and quote)
+data = JSON.parse(raw_json)
+p data["name"]

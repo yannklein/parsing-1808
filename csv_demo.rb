@@ -1,28 +1,33 @@
 require 'csv'
 
-# TODO - let's read/write data from beers.csv
-beer_filepath    = 'data/beers.csv'
-
 # READ CSV (= PARSE) WITHOUT HEADER
-csv_options = {quote_char: "'", col_sep: ";"}
-CSV.foreach(beer_filepath, csv_options) do |row|
-  p row[0] # an array
-end
-
-# READ CSV (= PARSE) WITH HEADER
-# csv_options = {quote_char: "'", col_sep: ";", headers: :first_row}
-# CSV.foreach(beer_filepath, csv_options) do |row|
-#   # p row.to_h # behave like a hash
-#   puts "#{row["Name"]}, #{row["Appearance"]} from #{row["Origin"]}"
+# filepath = 'data/beers.csv'
+# CSV.foreach(filepath) do |row|
+#   p "#{row[0]} is from #{row[2]} (#{row[3]}% alc)"
 # end
 
-# WRITE CSV
-beatles_filepath = 'data/beatles.csv'
+# READ CSV (= PARSE) WITH HEADER
+# filepath = 'data/beers.csv'
+# CSV.foreach(filepath, headers: :first_row) do |row|
+#   # p row
+#   p "#{row["Name"]} is from #{row["Origin"]} (#{row["Alcohol"]}% alc)"
+# end
 
-csv_options = {quote_char: "'", force_quotes: true, col_sep: ";"}
-CSV.open(beatles_filepath, 'wb', csv_options) do |csv|
-  csv << ["First Name", "Last Name", "Instrument"]
-  csv << ["John", "Lennon", "Guitar"]
-  csv << ["Paul", "McCartney", "Bass Guitar"]
-  csv << ["Leigh", "Starr", "Drum"]
+
+# WRITE CSV
+# "First Name", "Last Name", "Instrument"
+# "John", "Lennon", "Guitar"
+# "Paul", "McCartney", "Bass Guitar"
+
+beatles = [
+  ["Andre", "Lennon", "Guitar"],
+  ["Miho", "McCartney", "Bass Guitar"]
+]
+# wb means "write" "binaries" (binary = text + more complex chars)
+CSV.open("data/beatles.csv", 'wb') do |csv|
+  # csv represents the whole CSV file
+  csv <<["First Name", "Last Name", "Instrument"]
+  beatles.each do |beatle|
+    csv << beatle
+  end
 end

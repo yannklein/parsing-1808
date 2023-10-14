@@ -1,4 +1,3 @@
-'First Name';'Last Name';'Instrument'
-'John';'Lennon';'Guitar'
-'Paul';'McCartney';'Bass Guitar'
-'Leigh';'Starr';'Drum'
+First Name,Last Name,Instrument
+Andre,Lennon,Guitar
+Miho,McCartney,Bass Guitar
