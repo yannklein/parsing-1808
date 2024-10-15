@@ -1,5 +1,0 @@
-'Name','Appearance','Origin'
-
-"First Name", "Last Name", "Instrument"
-"John", "Lennon", "Guitar"
-"Paul", "McCartney", "Bass Guitar"

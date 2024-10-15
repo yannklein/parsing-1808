@@ -1,14 +1,14 @@
-require 'open-uri'
 require 'json'
+require 'open-uri'
 
-# TODO - Let's fetch some API from:
-# https://github.com/public-apis/public-apis
-# url = 'https://api.github.com/users/yannklein'
-url = "https://emojihub.yurace.pro/api/random"
+# TODO - Let's fetch some API:
 
-# Step 1 - get the html file
-raw_json = URI.open(url).read
+url = 'https://api.github.com/users/sadcrispy'
 
-# Step 2 - parse it with json library (find anime character and quote)
-data = JSON.parse(raw_json)
-p data["name"]
+# Step 1 - get the json file
+user_serialized = URI.open(url).read
+# p user_serialized
+
+# Step 2 - parse it with json library 
+user = JSON.parse(user_serialized)
+p user["name"]

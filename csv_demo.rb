@@ -1,32 +1,31 @@
 require 'csv'
 
 # READ CSV (= PARSE) WITHOUT HEADER
-# filepath = 'data/beers.csv'
+# filepath = "data/beers.csv"
+
 # CSV.foreach(filepath) do |row|
-#   p "#{row[0]} is from #{row[2]} (#{row[3]}% alc)"
+#   puts "#{row[0]} comes from #{row[2]}"
 # end
 
 # READ CSV (= PARSE) WITH HEADER
-# filepath = 'data/beers.csv'
-# CSV.foreach(filepath, headers: :first_row) do |row|
+# filepath = "data/beers.csv"
+
+# CSV.foreach(filepath, headers: :first_row, col_sep: ";") do |row|
 #   # p row
-#   p "#{row["Name"]} is from #{row["Origin"]} (#{row["Alcohol"]}% alc)"
+#   puts "#{row["Name"]} is from #{row["Origin"]}"
 # end
 
-
 # WRITE CSV
-# "First Name", "Last Name", "Instrument"
-# "John", "Lennon", "Guitar"
-# "Paul", "McCartney", "Bass Guitar"
 
 beatles = [
-  ["Andre", "Lennon", "Guitar"],
-  ["Miho", "McCartney", "Bass Guitar"]
+  ["Jarod", "Lennon", "Guitar"],
+  ["Phyu Phyu", "McCartney", "Bass Guitar"],
+  ["Roman", "Starr", "Drum"],
 ]
-# wb means "write" "binaries" (binary = text + more complex chars)
-CSV.open("data/beatles.csv", 'wb') do |csv|
-  # csv represents the whole CSV file
-  csv <<["First Name", "Last Name", "Instrument"]
+
+file_path = "data/beatles.csv"
+CSV.open(file_path, "wb") do |csv|
+  csv << ["first_name", "last_name", "instrument"]
   beatles.each do |beatle|
     csv << beatle
   end
